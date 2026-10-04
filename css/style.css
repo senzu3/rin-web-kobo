@@ -41,6 +41,15 @@ body {
   overflow-x: hidden;
 }
 
+/* 文末の1〜2文字だけが次の行に残らないようにし、日本語は文節で折り返す
+   （幅の狭い「制作の流れ」は行の長さがばらつくため、文節折り返しを外す） */
+p,
+li {
+  text-wrap: pretty;
+  word-break: auto-phrase;
+}
+.flow__text { word-break: normal; }
+
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 
