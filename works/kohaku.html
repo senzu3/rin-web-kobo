@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>琥珀 -KOHAKU- | 祇園、白川のほとりのウイスキーバー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary:#14100D; --bg-secondary:#1C1611; --bg-card:#211A14;
+    --text-primary:#EFE7D8; --text-muted:#A2937D; --text-faint:#6E6355;
+    --accent-amber:#C08A3E; --accent-amber-bright:#E0AA5E;
+    --accent-wine:#7A3542; --accent-sage:#7C9473;
+    --border-subtle:rgba(192,138,62,0.22);
+    --shadow-soft:0 20px 50px rgba(0,0,0,0.35);
+    --serif:'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    --sans:'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-primary:#14100D; --bg-secondary:#1C1611; --bg-card:#211A14;
+      --text-primary:#EFE7D8; --text-muted:#A2937D; --text-faint:#6E6355;
+      --accent-amber:#C08A3E; --accent-amber-bright:#E0AA5E;
+      --accent-wine:#7A3542; --accent-sage:#7C9473;
+      --border-subtle:rgba(192,138,62,0.22);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg-primary:#14100D; --bg-secondary:#1C1611; --bg-card:#211A14;
+    --text-primary:#EFE7D8; --text-muted:#A2937D; --text-faint:#6E6355;
+    --accent-amber:#C08A3E; --accent-amber-bright:#E0AA5E;
+    --accent-wine:#7A3542; --accent-sage:#7C9473;
+    --border-subtle:rgba(192,138,62,0.22);
+  }
+  :root[data-theme="light"] {
+    --bg-primary:#F5EFE3; --bg-secondary:#ECE2CE; --bg-card:#F9F4E9;
+    --text-primary:#2A2019; --text-muted:#6B5D4C; --text-faint:#8A7C68;
+    --accent-amber:#A8722E; --accent-amber-bright:#8F5E24;
+    --accent-wine:#7A3542; --accent-sage:#5F7654;
+    --border-subtle:rgba(122,53,66,0.22);
+    --shadow-soft:0 20px 50px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; scroll-padding-top:calc(72px + env(safe-area-inset-top,0px)); }
+  body {
+    background:var(--bg-primary); color:var(--text-primary);
+    font-family:var(--sans); font-weight:300; line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    overflow-x:hidden;
+  }
+  img,svg { max-width:100%; display:block; }
+  a { color:inherit; text-decoration:none; }
+  .container { max-width:1080px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 3rem); }
+  .section { padding:clamp(4rem, 10vw, 7.5rem) 0; }
+  .section--alt { background:var(--bg-secondary); }
+  .eyebrow-label { font-family:var(--serif); font-size:0.95rem; color:var(--accent-amber-bright); letter-spacing:0.08em; }
+  h1,h2,h3 { font-family:var(--serif); font-weight:600; line-height:1.4; }
+  h2.section-title { font-size:clamp(1.7rem, 4vw, 2.3rem); margin-bottom:0.9rem; }
+  @media (max-width:480px) {
+    #concept h2.section-title { font-size:clamp(1.05rem, 5.5vw, 1.5rem); white-space:nowrap; }
+  }
+  p.lead { color:var(--text-muted); font-size:1.02rem; max-width:34em; }
+  .btn {
+    display:inline-block; font-family:var(--sans); font-size:0.98rem; font-weight:500;
+    padding:0.9rem 2rem; border-radius:2px; border:1px solid var(--accent-amber);
+    transition:background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    cursor:pointer; -webkit-appearance:none; appearance:none;
+  }
+  .btn--primary { background:var(--accent-amber); color:#14100D; }
+  .btn--primary:hover { background:var(--accent-amber-bright); border-color:var(--accent-amber-bright); }
+  .btn--ghost { background:transparent; color:var(--text-primary); }
+  .btn--ghost:hover { border-color:var(--accent-amber-bright); color:var(--accent-amber-bright); }
+  .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+    outline:2px solid var(--accent-amber-bright); outline-offset:3px;
+  }
+
+  /* header */
+  header.site-header {
+    position:sticky; top:0; z-index:50;
+    padding-top:env(safe-area-inset-top,0px);
+    background:color-mix(in srgb, var(--bg-primary) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-subtle);
+  }
+  .nav-inner { display:flex; align-items:center; justify-content:space-between; padding:1rem clamp(1.25rem,5vw,3rem); max-width:1080px; margin:0 auto; }
+  .brand { font-family:var(--serif); font-size:1.25rem; letter-spacing:0.04em; }
+  button.brand { all:unset; cursor:pointer; font-family:var(--serif); font-size:1.25rem; letter-spacing:0.04em; }
+  .brand span { display:block; font-size:0.62rem; color:var(--text-faint); letter-spacing:0.22em; margin-top:2px; font-family:var(--sans); }
+  nav.links { display:flex; gap:2rem; font-size:0.92rem; color:var(--text-muted); }
+  nav.links button { all:unset; cursor:pointer; color:inherit; font-size:inherit; font-family:var(--sans); }
+  nav.links button:hover { color:var(--accent-amber-bright); }
+  .nav-cta { display:none; }
+  @media (min-width:720px) { .nav-cta { display:inline-block; } }
+  @media (max-width:719px) { nav.links { display:none; } }
+
+  .menu-toggle {
+    display:inline-flex; flex-direction:column; justify-content:center; align-items:flex-end;
+    width:36px; height:36px; gap:5px; background:transparent; border:none; cursor:pointer; padding:0;
+  }
+  @media (min-width:720px) { .menu-toggle { display:none; } }
+  .menu-toggle span { display:block; width:24px; height:2px; background:var(--text-primary); border-radius:2px; transition:transform 0.3s ease, opacity 0.3s ease, width 0.3s ease; }
+  .menu-toggle span:nth-child(2) { width:18px; }
+  .menu-toggle.is-open span { width:24px; }
+  .menu-toggle.is-open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .menu-toggle.is-open span:nth-child(2) { opacity:0; }
+  .menu-toggle.is-open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu { max-height:0; overflow:hidden; background:var(--bg-secondary); transition:max-height 0.35s ease; }
+  .mobile-menu.is-open { max-height:320px; border-top:1px solid var(--border-subtle); }
+  .mobile-menu-inner { padding:1.2rem clamp(1.25rem,5vw,3rem) 1.6rem; display:flex; flex-direction:column; gap:0.3rem; }
+  .mobile-menu-inner button { all:unset; display:block; box-sizing:border-box; width:100%; text-align:left; cursor:pointer; font-family:var(--sans); color:var(--text-muted); font-size:1rem; padding:0.55rem 0; border-bottom:1px solid var(--border-subtle); }
+  .mobile-menu-inner button:last-child { border-bottom:none; }
+  .mobile-menu-inner button:hover { color:var(--accent-amber-bright); }
+  @media (min-width:720px) { .mobile-menu { display:none; } }
+
+  /* hero */
+  #hero { position:relative; min-height:92vh; display:flex; align-items:center; padding:8rem 0 4rem; overflow:hidden; }
+  .hero-glow { position:absolute; top:8%; left:50%; transform:translateX(-50%); width:min(70vw,520px); opacity:0.9; pointer-events:none; }
+  .lantern-flame { animation:flicker 4.5s ease-in-out infinite; transform-origin:center; }
+  @keyframes flicker { 0%,100%{opacity:0.85; transform:scale(1);} 50%{opacity:1; transform:scale(1.04);} }
+  @media (prefers-reduced-motion:reduce) { .lantern-flame { animation:none; } }
+  .hero-inner { position:relative; text-align:center; max-width:760px; margin:0 auto; padding:0 1.25rem; }
+  .hero-inner .eyebrow-label { display:block; margin-bottom:1.6rem; }
+  h1.hero-title { font-size:clamp(2.1rem, 6vw, 3.6rem); letter-spacing:0.02em; }
+  p.hero-sub { margin-top:2.3rem; color:color-mix(in srgb, var(--text-primary) 55%, var(--text-muted)); font-size:clamp(1rem,2.2vw,1.12rem); line-height:2; max-width:34em; margin-left:auto; margin-right:auto; text-shadow:0 2px 14px rgba(0,0,0,0.45); }
+  .hero-actions { margin-top:2.6rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+  /* concept / bartender - alternating rows */
+  .row { display:grid; gap:clamp(2rem,5vw,4rem); align-items:center; }
+  @media (min-width:800px) { .row { grid-template-columns:1.1fr 0.9fr; } .row--rev { grid-template-columns:0.9fr 1.1fr; } .row--rev .row-media { order:2; } }
+  .row-text p { color:var(--text-muted); margin-top:1.1rem; }
+  .row-media { border:1px solid var(--border-subtle); padding:2rem; background:var(--bg-card); }
+  .quote { font-family:var(--serif); font-size:1.15rem; line-height:1.9; color:var(--text-primary); }
+  .quote-attr { margin-top:1rem; color:var(--text-faint); font-size:0.9rem; }
+
+  /* menu */
+  .menu-group { margin-bottom:2.6rem; }
+  .menu-group h3 { font-size:1.15rem; color:var(--accent-amber-bright); margin-bottom:1.2rem; }
+  .menu-item { display:flex; justify-content:space-between; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--border-subtle); }
+  .menu-item:last-child { border-bottom:none; }
+  .menu-item-name { font-family:var(--serif); font-size:1.05rem; }
+  .menu-item-desc { color:var(--text-muted); font-size:0.88rem; margin-top:0.35rem; max-width:34em; }
+  .menu-item-price { font-family:var(--serif); white-space:nowrap; padding-top:0.1rem; }
+
+  /* status + reserve */
+  .panels { display:grid; gap:1.75rem; }
+  @media (min-width:800px) { .panels { grid-template-columns:1fr 1.15fr; align-items:start; } }
+  .panel { background:var(--bg-card); border:1px solid var(--border-subtle); padding:clamp(1.6rem,4vw,2.4rem); }
+  .status-row { display:flex; align-items:center; gap:0.7rem; margin:1.1rem 0 0.4rem; }
+  .status-dot { width:11px; height:11px; border-radius:50%; flex-shrink:0; }
+  .status-text { font-family:var(--serif); font-size:1.2rem; }
+  .status-note { color:var(--text-muted); font-size:0.9rem; margin-top:0.6rem; }
+  .status-time { color:var(--text-faint); font-size:0.82rem; margin-top:1.4rem; }
+  .seat-gauge { display:flex; gap:6px; margin-top:1.3rem; flex-wrap:wrap; }
+  .seat { width:22px; height:14px; border:1px solid var(--accent-amber); }
+  .seat--occupied { background:var(--accent-wine); border-color:var(--accent-wine); }
+
+  form .field { margin-bottom:1.2rem; min-width:0; }
+  form label { display:block; font-size:0.86rem; color:var(--text-muted); margin-bottom:0.45rem; }
+  form input, form select, form textarea {
+    width:100%; max-width:100%; min-width:0; background:var(--bg-primary); border:1px solid var(--border-subtle);
+    color:var(--text-primary); padding:0.75rem 0.9rem; font-family:var(--sans); font-size:0.96rem;
+    box-sizing:border-box;
+  }
+  form input[type="date"] { padding:0.55rem 0.6rem; color:var(--text-muted); }
+  form input[type="date"].has-value { color:var(--accent-amber-bright); border-color:var(--accent-amber); font-weight:500; }
+  form .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; min-width:0; }
+  form textarea { min-height:80px; resize:vertical; }
+  @media (max-width:560px) {
+    form .two-col { grid-template-columns:1fr; }
+  }
+  .confirm-box { display:none; }
+  .confirm-box.show { display:block; }
+  .confirm-box p { color:var(--text-muted); margin-top:0.6rem; }
+  .confirm-ref { font-family:var(--serif); color:var(--accent-amber-bright); font-size:1.3rem; margin-top:1rem; }
+
+  /* access */
+  .access-grid { display:grid; gap:clamp(2rem,5vw,3rem); }
+  @media (min-width:800px) { .access-grid { grid-template-columns:1fr 1fr; } }
+  dl.access-list dt { color:var(--text-faint); font-size:0.82rem; margin-top:1.3rem; }
+  dl.access-list dt:first-child { margin-top:0; }
+  dl.access-list dd { font-size:1.02rem; margin-top:0.35rem; }
+  .map-sketch { border:1px solid var(--border-subtle); background:var(--bg-card); padding:2rem; }
+
+  footer { border-top:1px solid var(--border-subtle); padding:3rem 0; text-align:center; }
+  .sns-links { display:flex; gap:1.4rem; justify-content:center; margin-bottom:1.4rem; }
+  .sns-links a { color:var(--text-muted); }
+  .sns-links a:hover { color:var(--accent-amber-bright); }
+  footer .fine { color:var(--text-faint); font-size:0.8rem; margin-top:0.6rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <button type="button" class="brand" data-scroll="#hero">琥珀<span>KOHAKU &nbsp;GION, KYOTO</span></button>
+    <nav class="links">
+      <button type="button" data-scroll="#concept">コンセプト</button>
+      <button type="button" data-scroll="#menu">メニュー</button>
+      <button type="button" data-scroll="#status-reserve">空席状況・予約</button>
+      <button type="button" data-scroll="#access">アクセス</button>
+    </nav>
+    <button type="button" class="btn btn--primary nav-cta" data-scroll="#status-reserve" style="padding:0.55rem 1.3rem; font-size:0.88rem;">予約する</button>
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <button type="button" data-scroll="#concept">コンセプト</button>
+      <button type="button" data-scroll="#menu">メニュー</button>
+      <button type="button" data-scroll="#status-reserve">空席状況・予約</button>
+      <button type="button" data-scroll="#access">アクセス</button>
+    </div>
+  </div>
+</header>
+
+<section id="hero">
+  <svg class="hero-glow" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="42%" r="50%">
+        <stop offset="0%" stop-color="#E0AA5E" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#E0AA5E" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle class="lantern-flame" cx="100" cy="118" r="95" fill="url(#glow)"/>
+    <line x1="100" y1="8" x2="100" y2="30" stroke="var(--accent-amber)" stroke-width="1.5"/>
+    <ellipse cx="100" cy="36" rx="9" ry="5" fill="none" stroke="var(--accent-amber)" stroke-width="1.5"/>
+    <path d="M62 48 Q100 30 138 48 L148 188 Q100 212 52 188 Z" fill="rgba(224,170,94,0.08)" stroke="var(--accent-amber)" stroke-width="1.5"/>
+    <line x1="72" y1="53" x2="68" y2="184" stroke="var(--accent-amber)" stroke-width="1" opacity="0.5"/>
+    <line x1="100" y1="50" x2="100" y2="188" stroke="var(--accent-amber)" stroke-width="1" opacity="0.5"/>
+    <line x1="128" y1="53" x2="132" y2="184" stroke="var(--accent-amber)" stroke-width="1" opacity="0.5"/>
+    <ellipse cx="100" cy="193" rx="11" ry="4.5" fill="none" stroke="var(--accent-amber)" stroke-width="1.5"/>
+    <line x1="100" y1="197" x2="100" y2="212" stroke="var(--accent-amber)" stroke-width="1.5"/>
+  </svg>
+  <div class="hero-inner">
+    <span class="eyebrow-label">祇園、白川のほとりの路地裏</span>
+    <h1 class="hero-title">扉の向こうに、<br>もうひとつの夜。</h1>
+    <p class="hero-sub">古い町家の面影を残す路地の奥。<br>カウンター8席だけの、静かなウイスキーバー「琥珀」。<br>灯りを頼りに、扉を叩いてください。</p>
+    <div class="hero-actions">
+      <button type="button" class="btn btn--primary" data-scroll="#status-reserve">今夜の空席を見る</button>
+      <button type="button" class="btn btn--ghost" data-scroll="#concept">お店について</button>
+    </div>
+  </div>
+</section>
+
+<section id="concept" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="row-text">
+        <span class="eyebrow-label">コンセプト</span>
+        <h2 class="section-title">静けさも、もてなしのひとつ。</h2>
+        <p>大正期の町家を改装した店内には、当時の梁と土壁がそのまま残っています。照明はランプの灯りのみ。音楽は流さず、聞こえるのは氷の音と、隣り合う誰かの静かな話し声だけです。</p>
+        <p>カウンターはあえて8席のみ。多くのお客様をお迎えすることより、目の前の一杯とその時間に集中していただくことを大切にしています。「映える」ための店ではなく、「憶えている」ための店でありたいと考えています。</p>
+      </div>
+      <div class="row-media">
+        <p class="quote">「一杯には、その日のお客様だけの物語がある。同じレシピでも、同じ夜は二度と来ない。」</p>
+        <p class="quote-attr">— 琥珀の氷削りより</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="row row--rev">
+      <div class="row-text">
+        <span class="eyebrow-label">バーテンダー</span>
+        <h2 class="section-title">宗像 悠</h2>
+        <p>大阪・京都のバーで15年余り経験を積み、2019年に琥珀を開業。茶道における「一期一会」の精神を、カウンター越しの一杯に込めています。</p>
+        <p>氷は毎朝仕込む純氷を手で削り出し、その日の気温と湿度に合わせて一杯ごとに温度を調整。多くを語らず、必要な分だけそっと言葉を添えるもてなしを信条としています。</p>
+      </div>
+      <div class="row-media">
+        <p class="quote">「お客様がその日、何も話したくない気分なら、それでいい。氷の音だけで十分もてなしになる夜もあります。」</p>
+        <p class="quote-attr">— 店主・宗像</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="section">
+  <div class="container">
+    <span class="eyebrow-label">メニュー</span>
+    <h2 class="section-title" style="margin-bottom:2.5rem;">一夜のための一杯</h2>
+
+    <div class="menu-group">
+      <h3>シグネチャーカクテル</h3>
+      <div class="menu-item">
+        <div><div class="menu-item-name">琥珀の一杯</div><div class="menu-item-desc">国産ウイスキーとオレンジビターズを合わせた、当店定番のオールドファッションド。</div></div>
+        <div class="menu-item-price">¥1,800</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="menu-item-name">静寂</div><div class="menu-item-desc">スモークを纏わせた、余韻の長いスモーキーカクテル。</div></div>
+        <div class="menu-item-price">¥2,000</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="menu-item-name">白川夜船</div><div class="menu-item-desc">店の裏を流れる白川の水音をイメージした、爽やかなジンベース。</div></div>
+        <div class="menu-item-price">¥1,900</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="menu-item-name">一期一会</div><div class="menu-item-desc">季節の果実を用いた、その時期だけのスペシャルカクテル。</div></div>
+        <div class="menu-item-price">¥2,200</div>
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <h3>ウイスキー(グラス)</h3>
+      <div class="menu-item"><div class="menu-item-name">国産シングルモルト各種</div><div class="menu-item-price">¥1,500〜</div></div>
+      <div class="menu-item"><div class="menu-item-name">アイラモルト各種</div><div class="menu-item-price">¥1,700〜</div></div>
+      <div class="menu-item"><div class="menu-item-name">バーボン・ライ各種</div><div class="menu-item-price">¥1,400〜</div></div>
+    </div>
+
+    <div class="menu-group">
+      <h3>フード</h3>
+      <div class="menu-item"><div class="menu-item-name">生ハムと熟成チーズの盛り合わせ</div><div class="menu-item-price">¥1,600</div></div>
+      <div class="menu-item"><div class="menu-item-name">焼き味噌おにぎり</div><div class="menu-item-price">¥800</div></div>
+      <div class="menu-item"><div class="menu-item-name">季節のおばんざい三種</div><div class="menu-item-price">¥1,200</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="status-reserve" class="section section--alt">
+  <div class="container">
+    <span class="eyebrow-label">空席状況・ご予約</span>
+    <h2 class="section-title" style="margin-bottom:2.2rem;">今夜、お席はございます。</h2>
+    <div class="panels">
+
+      <div class="panel">
+        <div class="status-row">
+          <span class="status-dot" id="statusDot"></span>
+          <span class="status-text" id="statusText">確認中…</span>
+        </div>
+        <p class="status-note" id="statusNote"></p>
+        <div class="seat-gauge" id="seatGauge" aria-hidden="true"></div>
+        <p class="status-time" id="statusTime"></p>
+      </div>
+
+      <div class="panel">
+        <form id="reserveForm">
+          <div class="two-col">
+            <div class="field">
+              <label for="date">ご来店日</label>
+              <input type="date" id="date" required>
+            </div>
+            <div class="field">
+              <label for="time">お時間</label>
+              <select id="time" required>
+                <option value="">選択してください</option>
+                <option>18:00</option><option>18:30</option><option>19:00</option>
+                <option>19:30</option><option>20:00</option><option>20:30</option>
+                <option>21:00</option><option>21:30</option><option>22:00</option>
+                <option>22:30</option><option>23:00</option><option>23:30</option>
+              </select>
+            </div>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="guests">人数</label>
+              <select id="guests" required>
+                <option value="">選択してください</option>
+                <option>1名</option><option>2名</option><option>3名</option>
+                <option>4名</option><option>5名</option><option>6名</option><option>7名</option><option>8名</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="name">お名前</label>
+              <input type="text" id="name" required placeholder="山田 太郎">
+            </div>
+          </div>
+          <div class="field">
+            <label for="contact">電話番号 または メールアドレス</label>
+            <input type="text" id="contact" required placeholder="090-XXXX-XXXX">
+          </div>
+          <div class="field">
+            <label for="note">ご要望(任意)</label>
+            <textarea id="note" placeholder="記念日のご利用、苦手なお酒など"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary" style="width:100%; border:none; cursor:pointer;">この内容で予約する</button>
+        </form>
+
+        <div class="confirm-box" id="confirmBox">
+          <h3 style="font-size:1.2rem;">ご予約を承りました</h3>
+          <p id="confirmSummary"></p>
+          <p>内容確認のため、お店より折り返しご連絡を差し上げる場合がございます。</p>
+          <div class="confirm-ref" id="confirmRef"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="access" class="section">
+  <div class="container">
+    <div class="access-grid">
+      <div>
+        <span class="eyebrow-label">アクセス</span>
+        <h2 class="section-title">祇園・白川のほとり</h2>
+        <dl class="access-list">
+          <dt>エリア</dt><dd>京都・祇園(白川沿いの路地裏)</dd>
+          <dt>最寄り</dt><dd>京阪本線「祇園四条駅」より徒歩5分 / 阪急「京都河原町駅」より徒歩8分</dd>
+          <dt>営業時間</dt><dd>月〜土 18:00〜翌1:00(L.O. 24:00)</dd>
+          <dt>定休日</dt><dd>日曜・祝日</dd>
+          <dt>お電話</dt><dd>075-531-7788</dd>
+          <dt>所在地</dt><dd>隠れ家ゆえ、詳しい場所はご予約確定後にご案内しております。</dd>
+        </dl>
+      </div>
+      <div class="map-sketch" aria-hidden="true">
+        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 190 Q80 170 150 185 T290 175" stroke="var(--accent-sage)" stroke-width="2" fill="none" opacity="0.6"/>
+          <path d="M30 30 L30 150 L90 150 L90 90 L150 90 L150 150 L210 150 L210 60 L270 60 L270 150" stroke="var(--accent-amber)" stroke-width="1.2" fill="none" opacity="0.55"/>
+          <circle cx="150" cy="90" r="5" fill="var(--accent-amber-bright)"/>
+          <text x="160" y="86" fill="var(--text-muted)" font-size="11" font-family="Zen Kaku Gothic New, sans-serif">琥珀</text>
+          <text x="15" y="205" fill="var(--text-faint)" font-size="10" font-family="Zen Kaku Gothic New, sans-serif">白川</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand" style="justify-content:center; display:inline-block;">琥珀<span>KOHAKU &nbsp;GION, KYOTO</span></div>
+    <div class="sns-links" style="margin-top:1.6rem;">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="X">X</a>
+    </div>
+    <p class="fine">© KOHAKU, Gion Kyoto. これは架空の店舗として制作されたデモサイトです。</p>
+  </div>
+</footer>
+
+<script>
+  // ---- mobile menu + in-page smooth scrolling ----
+  const siteHeader = document.querySelector('.site-header');
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMobileMenuInstant() {
+    mobileMenu.style.transition = 'none';
+    mobileMenu.classList.remove('is-open');
+    menuToggle.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    void mobileMenu.offsetHeight; // force reflow so the collapse applies before we measure the header
+    mobileMenu.style.transition = '';
+  }
+
+  menuToggle.addEventListener('click', function () {
+    const isOpen = mobileMenu.classList.toggle('is-open');
+    this.classList.toggle('is-open', isOpen);
+    this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.querySelectorAll('[data-scroll]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const id = this.getAttribute('data-scroll');
+      const target = document.querySelector(id);
+      if (!target) return;
+      if (mobileMenu.contains(this)) { closeMobileMenuInstant(); }
+      const headerHeight = siteHeader ? siteHeader.getBoundingClientRect().height : 0;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  // ---- crowd status simulation (based on JST) ----
+  function jstNow() {
+    const now = new Date();
+    const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+    return new Date(utcMs + 9 * 3600000);
+  }
+
+  function getStatus() {
+    const jst = jstNow();
+    const day = jst.getDay();
+    const hour = jst.getHours();
+    const minute = jst.getMinutes();
+    const timeLabel = String(hour).padStart(2, '0') + ':' + String(minute).padStart(2, '0');
+
+    if (day === 0) {
+      return { level: 'closed', text: '本日は定休日です', seatsOpen: 0, timeLabel, note: '次回の営業は月曜 18:00からです。' };
+    }
+    const isOpen = hour >= 18 || hour < 1;
+    if (!isOpen) {
+      return { level: 'closed', text: 'ただいま営業時間外です', seatsOpen: 0, timeLabel, note: '本日 18:00 より営業いたします。' };
+    }
+    if (hour >= 18 && hour < 20) {
+      return { level: 'available', text: '空席ございます', seatsOpen: 6, timeLabel, note: 'ゆったりとお過ごしいただけます。' };
+    }
+    if (hour >= 20 && hour < 21) {
+      return { level: 'moderate', text: 'やや混み合っております', seatsOpen: 3, timeLabel, note: '少しずつ賑わってまいりました。' };
+    }
+    if (hour >= 21 && hour < 23) {
+      return { level: 'full', text: '満席でございます', seatsOpen: 0, timeLabel, note: '恐れ入りますが満席です。目安15〜20分ほどでご案内できる場合がございます。' };
+    }
+    if (hour >= 23 && hour < 24) {
+      return { level: 'moderate', text: 'やや落ち着いてまいりました', seatsOpen: 2, timeLabel, note: 'まもなくラストオーダーです。' };
+    }
+    return { level: 'available', text: '空席ございます', seatsOpen: 4, timeLabel, note: '静かな時間をお過ごしいただけます。' };
+  }
+
+  const levelColor = { available: 'var(--accent-sage)', moderate: 'var(--accent-amber)', full: 'var(--accent-wine)', closed: 'var(--text-faint)' };
+
+  function renderStatus() {
+    const s = getStatus();
+    document.getElementById('statusDot').style.background = levelColor[s.level];
+    document.getElementById('statusText').textContent = s.text;
+    document.getElementById('statusNote').textContent = s.note;
+    document.getElementById('statusTime').textContent = '現在時刻 ' + s.timeLabel + '(祇園・現地時間)';
+
+    const total = 8;
+    const occupied = s.level === 'closed' ? 0 : total - s.seatsOpen;
+    const gauge = document.getElementById('seatGauge');
+    gauge.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const el = document.createElement('span');
+      el.className = 'seat' + (i < occupied ? ' seat--occupied' : '');
+      gauge.appendChild(el);
+    }
+  }
+  renderStatus();
+  setInterval(renderStatus, 60000);
+
+  // ---- reservation form ----
+  const dateInput = document.getElementById('date');
+  try {
+    dateInput.min = new Date().toISOString().split('T')[0];
+  } catch (e) {}
+  dateInput.addEventListener('input', function () {
+    this.classList.toggle('has-value', !!this.value);
+  });
+
+  document.getElementById('reserveForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const guests = document.getElementById('guests').value;
+    const name = document.getElementById('name').value;
+
+    const ref = 'KH-' + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('confirmSummary').textContent =
+      name + ' 様、' + date + ' ' + time + '〜、' + guests + 'でお席をご用意いたします。';
+    document.getElementById('confirmRef').textContent = '予約番号 ' + ref;
+    document.getElementById('confirmBox').classList.add('show');
+    this.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>

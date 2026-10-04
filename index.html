@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>凜Web工房｜街のお店のホームページづくり</title>
+  <meta name="description" content="飲食店・美容室・銭湯など、街の個人店のホームページを制作しています。お店の雰囲気が伝わるデザインを、LINEで気軽にご相談いただけます。">
+  <meta property="og:title" content="凜Web工房｜街のお店のホームページづくり">
+  <meta property="og:description" content="お店の空気まで伝わるホームページを。街の個人店のためのWeb制作。">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- LINEアイコン（ボタンで使い回す） -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="icon-chat" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 2.6 1.6 4.9 4 6.4-.2.9-.7 2.4-1.6 3.4 0 0 2.9-.2 5-1.8.8.2 1.7.3 2.6.3 5.5 0 10-3.6 10-8S17.5 3 12 3Z"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="#top">凜Web工房</a>
+      <nav id="global-nav" class="global-nav" aria-label="ページ内メニュー">
+        <ul class="global-nav__list">
+          <li><a href="#works">制作実績</a></li>
+          <li><a href="#reasons">選ばれる理由</a></li>
+          <li><a href="#price">料金</a></li>
+          <li><a href="#flow">制作の流れ</a></li>
+          <li><a href="#about">自己紹介</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn--primary header-cta" href="https://lin.ee/yTte9gOx" target="_blank" rel="noopener">LINEで相談</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="global-nav" aria-label="メニューを開く">
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- トップ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <h1 id="hero-title" class="hero__title">お店の空気まで、<br>伝わるホームページを。</h1>
+        <div class="hero__copy">
+          <div class="hero__body">
+            <p class="hero__lead">
+              飲食店、美容室、銭湯。<br>
+              街の個人店のホームページを、ひとりで丁寧につくっています。<br>
+              お店に一歩入ったときのあの感じを、スマホの画面越しにも。
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="https://lin.ee/yTte9gOx" target="_blank" rel="noopener">
+                <svg class="btn__icon" aria-hidden="true"><use href="#icon-chat"></use></svg>
+                LINEで気軽に相談する
+              </a>
+              <a class="btn btn--ghost" href="#works">制作実績を見る</a>
+              <p class="hero__note">相談・お見積もりは無料です。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__phones" aria-hidden="true">
+          <div class="phone phone--1"><img src="assets/images/work-kohaku-sp.webp" alt="" width="390" height="844"></div>
+          <div class="phone phone--2"><img src="assets/images/work-kyonan-sp.webp" alt="" width="390" height="844"></div>
+          <div class="phone phone--3"><img src="assets/images/work-luna-sp.webp" alt="" width="390" height="844"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 制作実績 -->
+    <section id="works" class="section" aria-labelledby="works-title">
+      <div class="container">
+        <h2 id="works-title" class="section-title">制作実績</h2>
+        <p class="section-lead">画像を押すと、実際のサイトが新しいタブで開きます。スマホでもぜひ触ってみてください。</p>
+
+        <ul class="works-list">
+          <li>
+            <article class="work">
+              <a class="work__visual" href="works/kyonan-yokujo.html" target="_blank" rel="noopener">
+                <img src="assets/images/work-kyonan.webp" alt="境南浴場のサイトのトップ画面" width="1200" height="750" loading="lazy">
+              </a>
+              <div class="work__body">
+                <span class="work__tag work__tag--real">提案実績</span>
+                <h3 class="work__name">境南浴場</h3>
+                <p class="work__type">銭湯（東京都武蔵野市）</p>
+                <p class="work__point">リニューアルした銭湯への提案デザインです。昔ながらの温もりと新しい清潔感の両方が伝わるよう、湯けむりのモチーフと深い緑でまとめました。今日の営業中かどうかがひと目で分かります。</p>
+                <a class="work__link" href="works/kyonan-yokujo.html" target="_blank" rel="noopener">サイトを見る（新しいタブ）</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="work">
+              <a class="work__visual" href="works/kohaku.html" target="_blank" rel="noopener">
+                <img src="assets/images/work-kohaku.webp" alt="ウイスキーバー琥珀のサイトのトップ画面" width="1200" height="750" loading="lazy">
+              </a>
+              <div class="work__body">
+                <span class="work__tag work__tag--sample">制作サンプル（架空店舗）</span>
+                <h3 class="work__name">琥珀 -KOHAKU-</h3>
+                <p class="work__type">ウイスキーバー（京都・祇園）</p>
+                <p class="work__point">8席だけの隠れ家バーを想定したサンプルです。扉を開ける前の高揚感を、灯りのモチーフと琥珀色の配色で表現しました。今夜の空席が分かる予約導線も入れています。</p>
+                <a class="work__link" href="works/kohaku.html" target="_blank" rel="noopener">サイトを見る（新しいタブ）</a>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="work">
+              <a class="work__visual" href="works/luna.html" target="_blank" rel="noopener">
+                <img src="assets/images/work-luna.webp" alt="美容室LUNAのサイトのトップ画面" width="1200" height="750" loading="lazy">
+              </a>
+              <div class="work__body">
+                <span class="work__tag work__tag--sample">制作サンプル（架空店舗）</span>
+                <h3 class="work__name">LUNA Hair &amp; Design</h3>
+                <p class="work__type">プライベート美容室</p>
+                <p class="work__point">完全個室の美容室を想定したサンプルです。落ち着いた余白と柔らかな色で、「ここなら自分の時間を過ごせそう」と感じてもらえる画面を目指しました。</p>
+                <a class="work__link" href="works/luna.html" target="_blank" rel="noopener">サイトを見る（新しいタブ）</a>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 選ばれる理由 -->
+    <section id="reasons" class="section section--washi" aria-labelledby="reasons-title">
+      <div class="container">
+        <h2 id="reasons-title" class="section-title">選ばれる理由</h2>
+        <p class="section-lead">きれいなだけのホームページでは、お客さんは来てくれません。お店の良さが伝わって、来店につながることを大切にしています。</p>
+
+        <div class="reasons">
+          <div class="reason">
+            <h3 class="reason__title">お店の「らしさ」を<br>一緒に言葉にします</h3>
+            <p class="reason__text">最初にじっくりお話を聞いて、常連さんがなぜ通ってくれるのかを一緒に探します。そこからデザインを考えるので、どこかで見たようなサイトにはなりません。</p>
+          </div>
+          <div class="reason">
+            <h3 class="reason__title">スマホで見て、<br>迷わず来られる</h3>
+            <p class="reason__text">お客さんの多くはスマホで調べます。営業時間、場所、予約方法がすぐ分かるように、スマホの画面から設計します。</p>
+          </div>
+          <div class="reason">
+            <h3 class="reason__title">専門用語なし。<br>やりとりはLINEで</h3>
+            <p class="reason__text">お店の営業の合間に、LINEで気軽に確認できます。難しい言葉は使わず、決めることはひとつずつご案内します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 料金 -->
+    <section id="price" class="section" aria-labelledby="price-title">
+      <div class="container">
+        <h2 id="price-title" class="section-title">料金の目安</h2>
+        <p class="section-lead">お店の規模やご希望に合わせて調整します。まずはお気軽にご相談ください。</p>
+
+        <div class="plans">
+          <article class="plan">
+            <h3 class="plan__name">ライト</h3>
+            <p class="plan__for">まずは1ページから始めたいお店に</p>
+            <p class="plan__price">10,000円<small>〜（税込）</small></p>
+            <ul class="plan__list">
+              <li>1ページのサイト</li>
+              <li>スマホ対応</li>
+              <li>地図・営業時間・SNSリンク</li>
+              <li>公開までのサポート</li>
+            </ul>
+          </article>
+          <article class="plan plan--featured">
+            <h3 class="plan__name">スタンダード</h3>
+            <p class="plan__for">メニューや予約まで載せたいお店に</p>
+            <p class="plan__price">30,000円<small>〜（税込）</small></p>
+            <ul class="plan__list">
+              <li>最大5ページ</li>
+              <li>メニュー・料金表</li>
+              <li>予約・問い合わせへの導線</li>
+              <li>写真選びのアドバイス</li>
+            </ul>
+          </article>
+          <article class="plan">
+            <h3 class="plan__name">更新サポート</h3>
+            <p class="plan__for">公開後も任せたいお店に</p>
+            <p class="plan__price">5,000円<small>／月（税込）</small></p>
+            <ul class="plan__list">
+              <li>お知らせ・メニューの更新</li>
+              <li>LINEで修正のご依頼</li>
+              <li>サーバー・ドメインの管理</li>
+            </ul>
+          </article>
+        </div>
+        <p class="plans-note">※ ドメイン・サーバー代は別途かかります。写真撮影が必要な場合もご相談ください。</p>
+      </div>
+    </section>
+
+    <!-- 制作の流れ -->
+    <section id="flow" class="section section--washi" aria-labelledby="flow-title">
+      <div class="container">
+        <h2 id="flow-title" class="section-title">制作の流れ</h2>
+        <p class="section-lead">ご相談から公開まで、1ページのサイトでおよそ3〜4週間が目安です。</p>
+
+        <ol class="flow">
+          <li class="flow__step">
+            <h3 class="flow__title">ご相談</h3>
+            <p class="flow__text">LINEかフォームで、まずはお気軽に。費用や期間の目安をお伝えします。</p>
+          </li>
+          <li class="flow__step">
+            <h3 class="flow__title">ヒアリング</h3>
+            <p class="flow__text">お店に伺うかオンラインで、お店のこと・お客さんのことをじっくりお聞きします。</p>
+          </li>
+          <li class="flow__step">
+            <h3 class="flow__title">デザイン提案</h3>
+            <p class="flow__text">トップページのデザインをお見せします。気になる点は何度でもご相談ください。</p>
+          </li>
+          <li class="flow__step">
+            <h3 class="flow__title">制作</h3>
+            <p class="flow__text">スマホ・パソコンの両方で確認しながら仕上げます。</p>
+          </li>
+          <li class="flow__step">
+            <h3 class="flow__title">公開・フォロー</h3>
+            <p class="flow__text">公開後も、困ったことがあればLINEでいつでもどうぞ。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 自己紹介 -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="section-title">つくっている人</h2>
+        <div class="about">
+          <div class="about__photo">
+            <img src="assets/images/profile.webp" alt="中川翔士の写真" width="600" height="600" loading="lazy">
+          </div>
+          <div class="about__text">
+            <p class="about__name">中川 翔士</p>
+            <p class="about__role">Webデザイナー／凜Web工房</p>
+            <p>はじめまして。街の個人店のホームページづくりをしています。</p>
+            <p>行きつけのお店には、そこにしかない空気があります。けれど、ホームページを見ても伝わってこないことがよくあります。それがもったいなくて、この仕事を始めました。</p>
+            <p>ひとりで営んでいるので、ご相談からデザイン、公開後のやりとりまで、ずっと同じ人間が担当します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section id="faq" class="section section--washi" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title" class="section-title">よくある質問</h2>
+        <div class="faq">
+          <details class="faq__item">
+            <summary class="faq__q">パソコンに詳しくなくても大丈夫ですか？</summary>
+            <p class="faq__a">大丈夫です。必要なことはひとつずつご案内しますし、やりとりはLINEだけで完結します。</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">写真や文章がまだありません。</summary>
+            <p class="faq__a">ヒアリングをもとに文章の下書きをこちらで作ります。写真はスマホでの撮り方をお伝えするか、撮影のご相談にも応じます。</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">今あるホームページを作り直すこともできますか？</summary>
+            <p class="faq__a">はい、できます。今のサイトで困っていることを教えていただければ、改善の方向をご提案します。</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">公開後に自分で内容を変えられますか？</summary>
+            <p class="faq__a">ご希望に合わせて作り方を変えます。ご自身で更新したい場合も、更新サポートでお任せいただく場合も、どちらでも大丈夫です。</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">遠方のお店でも頼めますか？</summary>
+            <p class="faq__a">はい。ヒアリングはオンラインでも行えます。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title">ご相談・お問い合わせ</h2>
+        <p class="section-lead">「こんなことできる？」くらいの段階でも大丈夫です。お見積もりは無料です。</p>
+
+        <div class="contact">
+          <div class="contact__line">
+            <p class="contact__line-title">LINEで相談する</p>
+            <p class="contact__line-text">いちばん気軽な方法です。友だち追加して、メッセージを送ってください。営業時間の合間に、ご都合のよいときにお返事いただければ大丈夫です。</p>
+            <a class="btn btn--primary" href="https://lin.ee/yTte9gOx" target="_blank" rel="noopener">
+              <svg class="btn__icon" aria-hidden="true"><use href="#icon-chat"></use></svg>
+              LINEで友だち追加する
+            </a>
+          </div>
+
+          <div class="contact__form">
+            <h3 class="form-title">フォームで問い合わせる</h3>
+            <form class="form" action="https://formspree.io/f/moejabqg" method="POST">
+              <div class="form__field">
+                <label class="form__label" for="name">お名前<span class="form__required">必須</span></label>
+                <input class="form__input" id="name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="shop">店名</label>
+                <input class="form__input" id="shop" name="shop" type="text" autocomplete="organization">
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="email">メールアドレス<span class="form__required">必須</span></label>
+                <input class="form__input" id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="message">ご相談内容<span class="form__required">必須</span></label>
+                <textarea class="form__textarea" id="message" name="message" required placeholder="例：カフェのホームページを新しく作りたいです。"></textarea>
+              </div>
+              <button class="btn btn--primary form__submit" type="submit">送信する</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a class="logo" href="#top">凜Web工房</a>
+      <p>&copy; <span id="year">2026</span> 凜Web工房</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

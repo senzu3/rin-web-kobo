@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNA Hair & Design | 自分を取り戻す、髪と心のサンクチュアリ</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* 
+         * Color Palette 
+         * Primary: #F9F8F6 (Light Beige - Background)
+         * Secondary: #EAE6DF (Darker Beige - Accent)
+         * Text: #333333 (Dark Gray)
+         * Accent Text: #7A7571 (Muted Warm Gray)
+         */
+
+        :root {
+            --bg-color: #F9F8F6;
+            --accent-bg: #EAE6DF;
+            --text-main: #333333;
+            --text-light: #7A7571;
+            --white: #FFFFFF;
+            --font-serif: 'Noto Serif JP', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            color: var(--text-main);
+        }
+
+        .section-title span {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            text-transform: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--text-main);
+            color: var(--white);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+            border: 1px solid var(--text-main);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--text-main);
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(249, 248, 246, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-sans);
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem; /* ナビゲーションタブの間隔を拡張 */
+        }
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .nav-links a:not(.nav-reserve):hover {
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .nav-links a.nav-reserve {
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--text-main);
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-links a.nav-reserve:hover {
+            background-color: var(--text-main);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        /* Animated Slideshow Background */
+        .hero-bg-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: heroFade 18s infinite ease-in-out;
+        }
+
+        .hero-slide:nth-child(1) {
+            background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop');
+            animation-delay: 0s;
+        }
+
+        .hero-slide:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=2069&auto=format&fit=crop');
+            animation-delay: 6s;
+        }
+
+        .hero-slide:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop');
+            animation-delay: 12s;
+        }
+
+        @keyframes heroFade {
+            0% { opacity: 0; transform: scale(1.05); }
+            8% { opacity: 1; }
+            33% { opacity: 1; }
+            41% { opacity: 0; transform: scale(1.0); }
+            100% { opacity: 0; }
+        }
+
+        /* Soft Overlay Layer */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(249, 248, 246, 0.45) 0%, rgba(249, 248, 246, 0.75) 50%, rgba(249, 248, 246, 0.95) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 840px;
+            padding: 3rem 2.5rem;
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            padding: 0.4rem 1.2rem;
+            background-color: rgba(122, 117, 113, 0.1);
+            color: var(--text-light);
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature-item {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-feature-item::before {
+            content: '•';
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        /* Concept Section */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .concept-image {
+            width: 100%;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=2036&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        .concept-text h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-text p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--accent-bg);
+        }
+
+        .menu-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-name {
+            font-size: 1.1rem;
+        }
+
+        .menu-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+
+        .menu-price {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+        }
+
+        .menu-category-title {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .more-menu-container {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.7s cubic-bezier(0, 1, 0, 1), opacity 0.4s ease;
+        }
+
+        .more-menu-container.is-expanded {
+            max-height: 2500px;
+            opacity: 1;
+            transition: max-height 0.9s ease-in-out, opacity 0.5s ease 0.1s;
+        }
+
+        /* Access Section */
+        .access-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .info-list {
+            margin-bottom: 2rem;
+        }
+
+        .info-list li {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-label {
+            width: 120px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-family: var(--font-sans);
+            /* In a real project, embed Google Maps iframe here */
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-main);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-sans);
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            font-family: var(--font-sans);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Mobile menu would typically be a hamburger */
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .concept-image {
+                height: 300px;
+                order: -1; /* Image on top for mobile */
+            }
+
+            .access-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">LUNA</a>
+            <nav class="nav-links">
+                <a href="#concept">Concept</a>
+                <a href="#menu">Menu</a>
+                <a href="#access">Access</a>
+                <a href="#" class="nav-reserve">Web Reservation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-slideshow">
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Private Salon & Head Spa</span>
+            <h1 class="hero-title">「自分」を取り戻す、<br>髪と心のサンクチュアリ。</h1>
+            <p class="hero-subtitle">完全個室のプライベート空間と、本気の髪質改善。<br>触れるたび、自信に満ちた新しい自分へ。</p>
+            <a href="#" class="btn">ご予約はこちら</a>
+            <div class="hero-features">
+                <span class="hero-feature-item">完全個室・半個室</span>
+                <span class="hero-feature-item">マンツーマン施術</span>
+                <span class="hero-feature-item">フルフラット極上スパ</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="concept">
+        <div class="container">
+            <h2 class="section-title">Concept <span>私たちのこだわり</span></h2>
+            <div class="concept-grid">
+                <div class="concept-text">
+                    <h3>息をのむ美しさは、<br>静寂の中で作られる。</h3>
+                    <p>LUNA Hair & Designは、喧騒から離れたモダンでミニマルな空間で、あなただけの時間を過ごせる完全個室・半個室のプライベートサロンです。</p>
+                    <p>私たちが大切にしているのは「本質的な髪質改善」。専任のスタイリストがマンツーマンで向き合い、あなたの髪質や骨格、ライフスタイルに合わせた最適なケアをご提案します。</p>
+                    <p>フルフラットのシャンプー台でまどろむ極上のヘッドスパで、髪の芯から潤い、心まで満たされる至福の時間をお約束します。</p>
+                </div>
+                <!-- Image Placeholder -->
+                <div class="concept-image" title="サロン内観イメージ"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title">Menu & Price <span>メニュー・料金</span></h2>
+            <div class="menu-list">
+                <div class="menu-category-title">Recommended Menu / おすすめコース</div>
+                <div class="menu-item">
+                    <div>
+                        <h4 class="menu-name">カット ＋ プレミアム髪質改善トリートメント</h4>
+                        <p class="menu-desc">骨格補正カットと、髪の内部から補修する当サロン1番人気のケア。</p>
+                    </div>
+                    <div class="menu-price">¥13,200</div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <h4 class="menu-name">カット ＋ オーガニックカラー</h4>
+                        <p class="menu-desc">頭皮と髪に優しいオーガニック薬剤を使用した、透明感のあるカラーリング。</p>
+                    </div>
+                    <div class="menu-price">¥14,300</div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <h4 class="menu-name">極上ヘッドスパ（60分）</h4>
+                        <p class="menu-desc">フルフラットシャンプー台での贅沢アロマシャンプー＆頭皮リフレッシュ。</p>
+                    </div>
+                    <div class="menu-price">¥7,700</div>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <h4 class="menu-name">LUNA スペシャルコース</h4>
+                        <p class="menu-desc">カット＋カラー＋髪質改善＋ヘッドスパの贅沢フルコース。</p>
+                    </div>
+                    <div class="menu-price">¥22,000</div>
+                </div>
+
+                <!-- Expanded Menu items hidden by default -->
+                <div id="more-menu" class="more-menu-container">
+                    
+                    <div class="menu-category-title">Cut & Styling / カット・スタイリング</div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">デザインカット（シャンプー・ブロー込）</h4>
+                            <p class="menu-desc">一人ひとりの骨格・毛流れに合わせた再現性の高いパーソナルカット。</p>
+                        </div>
+                        <div class="menu-price">¥6,600</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">前髪・ポイントカット</h4>
+                            <p class="menu-desc">目元の印象を美しく整える前髪・フェイスラインの微調整。</p>
+                        </div>
+                        <div class="menu-price">¥1,650</div>
+                    </div>
+
+                    <div class="menu-category-title">Color / カラー</div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">透明感アディクシー / イルミナカラー</h4>
+                            <p class="menu-desc">赤みを抑え、やわらかなツヤと透明感を演出する上質カラー。</p>
+                        </div>
+                        <div class="menu-price">¥8,800</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">デザインハイライト / ケアブリーチカラー</h4>
+                            <p class="menu-desc">立体感と抜け感を叶える上品なハイライト・インナーカラー（ケア処理込）。</p>
+                        </div>
+                        <div class="menu-price">¥16,500〜</div>
+                    </div>
+
+                    <div class="menu-category-title">Perm & Straight / パーマ・ストレート</div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">プレミアム酸性ストレート（縮毛矯正）</h4>
+                            <p class="menu-desc">ダメージを最小限に抑え、生まれつきの直毛のような自然で柔らかな指通りへ。</p>
+                        </div>
+                        <div class="menu-price">¥19,800</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">ナチュラルニュアンスパーマ</h4>
+                            <p class="menu-desc">毎朝のスタイリングが楽になる、ふんわり柔らかなウェーブスタイル。</p>
+                        </div>
+                        <div class="menu-price">¥9,900</div>
+                    </div>
+
+                    <div class="menu-category-title">Head Spa & Hair Care / ヘッドスパ・髪質改善</div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">サイエンスアクア プレミアム髪質改善チャージ</h4>
+                            <p class="menu-desc">水とアミノ酸の力でエイジング毛やくせ毛の広がりを根本から毛髪改善。</p>
+                        </div>
+                        <div class="menu-price">¥9,900</div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4 class="menu-name">ディープアロマエステ スパ（45分）</h4>
+                            <p class="menu-desc">オーガニックオイルとツボ押し頭部マッサージによる深層リラクゼーション。</p>
+                        </div>
+                        <div class="menu-price">¥6,600</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <button id="toggle-menu-btn" class="btn" style="background-color: transparent; color: var(--text-main); cursor: pointer;">
+                    メニューをすべて見る <span style="font-size: 0.8em; margin-left: 0.3rem;">▼</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="access">
+        <div class="container">
+            <h2 class="section-title">Access <span>店舗情報</span></h2>
+            <div class="access-content">
+                <div class="access-info">
+                    <ul class="info-list">
+                        <li>
+                            <span class="info-label">Shop Name</span>
+                            <span>LUNA Hair & Design（ルナ ヘアアンドデザイン）</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Address</span>
+                            <span>〒150-0001<br>東京都渋谷区神宮前X-X-X ルナビル2F</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Open</span>
+                            <span>10:00 - 20:00 (最終受付 19:00)</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Close</span>
+                            <span>毎週火曜日・第2水曜日</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Tel</span>
+                            <span>03-XXXX-XXXX</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn">Google Mapsで開く</a>
+                </div>
+                <!-- Map Placeholder -->
+                <div class="map-placeholder">
+                    Google Map Embed Area
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">LUNA</div>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Line</a>
+            </div>
+            <p class="copyright">&copy; 2026 LUNA Hair & Design. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('toggle-menu-btn');
+            const moreMenu = document.getElementById('more-menu');
+            
+            if (toggleBtn && moreMenu) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isExpanded = moreMenu.classList.toggle('is-expanded');
+                    
+                    if (isExpanded) {
+                        toggleBtn.innerHTML = 'メニューを閉じる <span style="font-size: 0.8em; margin-left: 0.3rem;">▲</span>';
+                    } else {
+                        toggleBtn.innerHTML = 'メニューをすべて見る <span style="font-size: 0.8em; margin-left: 0.3rem;">▼</span>';
+                        document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
