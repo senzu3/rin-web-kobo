@@ -333,9 +333,13 @@ a { color: inherit; }
 
 .work__type { margin: 2px 0 14px; color: var(--usuzumi); font-size: 0.875rem; }
 
-.work__point { margin: 0 0 20px; }
+.work__point { margin: 0 0 10px; }
 
+/* 指で押しやすいよう、押せる範囲を高さ44px以上にする */
 .work__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-weight: 700;
   color: var(--terracotta);
   text-underline-offset: 6px;
