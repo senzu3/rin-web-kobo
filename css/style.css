@@ -411,6 +411,18 @@ a { color: inherit; }
 }
 .plan__price small { font-family: var(--font-sans); font-size: 0.875rem; font-weight: 500; }
 
+/* モニター価格：通常価格を打ち消し線で添え、ラベルで条件付きの価格だと示す */
+.plan__regular { margin: 0; font-size: 0.875rem; color: var(--usuzumi); }
+.plan__tag {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--terracotta-dark);
+}
+
 .plan__list {
   margin: 0;
   padding: 18px 0 0;
