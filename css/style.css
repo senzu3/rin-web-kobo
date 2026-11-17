@@ -1,3 +1,7 @@
+/* Hallmark · checked: 2026-11-18 · genre: editorial (inferred)
+ * floor: 0 FAIL · fixed: 7 (7a, 34, 48, 50, 54, 67, 26b) · structural: 2 printed (42, 24b)
+ * built: the project · redesign: polish · v2.0.0 */
+
 /* =========================================================
    ポートフォリオ  style.css
    モバイルファースト / 768px〜 タブレット / 1024px〜 PC
@@ -12,6 +16,11 @@
   --terracotta: #B5532F;  /* 差し色 */
   --terracotta-dark: #96421F;
   --line: #D9CFBE;        /* 罫線 */
+  --line-strong: #BDB2A0; /* 入力欄の枠 */
+  --paper: #FFFCF6;       /* 生成りに寄せた白：入力欄・作品の台紙・ボタン文字 */
+  --kinari-muted: #D8D0C3;/* 墨の面の上の補足文 */
+  --shadow: rgba(35, 32, 28, 0.45);
+  --shadow-strong: rgba(35, 32, 28, 0.5);
 
   /* 文字 */
   --font-serif: "Shippori Mincho", "Hiragino Mincho ProN", serif;
@@ -27,7 +36,7 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -38,7 +47,7 @@ body {
   line-height: 1.9;
   letter-spacing: 0.04em;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* 文末の1〜2文字だけが次の行に残らないようにし、日本語は文節で折り返す
@@ -82,6 +91,7 @@ a { color: inherit; }
   font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
   line-height: 1.5;
   letter-spacing: 0.08em;
+  text-wrap: balance;
 }
 
 .section-lead {
@@ -106,11 +116,16 @@ a { color: inherit; }
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
 }
 
-.btn--primary { background: var(--terracotta); color: #fff; }
+.btn--primary { background: var(--terracotta); color: var(--paper); }
 .btn--primary:hover { background: var(--terracotta-dark); }
+
+/* 押した瞬間は少し沈ませ、押せない間は薄くする */
+.btn:active { transform: translateY(1px); }
+.btn:disabled,
+.btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .btn--ghost { border-color: var(--sumi); color: var(--sumi); background: transparent; }
 .btn--ghost:hover { background: var(--sumi); color: var(--kinari); }
@@ -123,8 +138,7 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(246, 242, 234, 0.94);
-  backdrop-filter: blur(8px);
+  background: var(--kinari);
   border-bottom: 1px solid var(--line);
 }
 
@@ -231,6 +245,9 @@ a { color: inherit; }
   font-size: clamp(1.75rem, 0.6rem + 5vw, 4.5rem);
   line-height: 1.45;
   letter-spacing: 0.04em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .hero__body {
@@ -273,7 +290,7 @@ a { color: inherit; }
   border-radius: 26px;
   overflow: hidden;
   background: var(--sumi);
-  box-shadow: 0 18px 40px -18px rgba(35, 32, 28, 0.45);
+  box-shadow: 0 18px 40px -18px var(--shadow);
   opacity: 0;
   animation: phone-rise .9s cubic-bezier(.2, .7, .2, 1) forwards;
 }
@@ -308,13 +325,13 @@ a { color: inherit; }
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
   box-shadow: 0 1px 0 var(--line);
   transition: transform .3s ease, box-shadow .3s ease;
 }
 .work__visual:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px -20px rgba(35, 32, 28, 0.5);
+  box-shadow: 0 16px 32px -20px var(--shadow-strong);
 }
 
 .work__visual img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; width: 100%; }
@@ -327,7 +344,7 @@ a { color: inherit; }
   border-radius: 999px;
   font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
 }
 .work__tag--real { color: var(--terracotta); }
 .work__tag--sample { color: var(--usuzumi); }
@@ -419,7 +436,7 @@ a { color: inherit; }
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   color: var(--terracotta-dark);
 }
 
@@ -583,7 +600,7 @@ a { color: inherit; }
   font-weight: 600;
 }
 
-.contact__line-text { margin: 0 0 24px; color: #D8D0C3; font-size: 0.9375rem; }
+.contact__line-text { margin: 0 0 24px; color: var(--kinari-muted); font-size: 0.9375rem; }
 
 .contact__line .btn { width: 100%; }
 
@@ -605,9 +622,9 @@ a { color: inherit; }
 .form__textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #BDB2A0;
+  border: 1px solid var(--line-strong);
   border-radius: 4px;
-  background: #fff;
+  background: var(--paper);
   color: var(--sumi);
   font: inherit;
   font-size: 16px; /* iOSで勝手にズームしない */
@@ -639,14 +656,14 @@ a { color: inherit; }
 
   .hero__phones { height: 500px; max-width: 460px; }
 
-  .work { grid-template-columns: 1.4fr 1fr; align-items: center; gap: 40px; }
+  .work { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: center; gap: 40px; }
   .works-list > li:nth-child(even) .work__visual { order: 2; }
 
   .reasons { grid-template-columns: repeat(3, 1fr); gap: 32px; }
 
   .plans { grid-template-columns: repeat(2, 1fr); }
 
-  .about { grid-template-columns: 220px 1fr; gap: 48px; }
+  .about { grid-template-columns: 220px minmax(0, 1fr); gap: 48px; }
   .about__photo { width: 100%; }
 
   .contact__line { padding: 40px; }
@@ -686,7 +703,7 @@ a { color: inherit; }
 
   .hero { padding-block: 72px 40px; }
   /* 見出しは2列にまたがって大きく、その下に本文と作品画面を並べる */
-  .hero__inner { grid-template-columns: 1fr 1fr; align-items: start; gap: 48px 56px; }
+  .hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: 48px 56px; }
   .hero__title { grid-column: 1 / -1; }
   .hero__body { padding-top: 24px; }
   .hero__phones { height: 560px; max-width: 500px; }
